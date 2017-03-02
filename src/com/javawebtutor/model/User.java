@@ -8,29 +8,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USER_TABLE")
+@Table(name="users")
 public class User implements Serializable {
     
     @Id @GeneratedValue
     private Long id;
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private String unique_id;
+    private String name;
     private String email;
-    private String userId;
-    private String password;
+    private String encrypted_password;
+    private String created_at;
+    private String updated_at;
 
     public User() {
     }
 
     
-    public User(String firstName, String middleName, String lastName, String email, String userId, String password) {
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
+    public User(String name, String email, String encrypted_password) {
+        //this.unique_id = unique_id;
+        this.name = name;
         this.email = email;
-        this.userId = userId;
-        this.password = password;
+        this.encrypted_password = encrypted_password;
+        //this.created_at = created_at;
+        //this.updated_at = updated_at;
     }
 
 
@@ -40,33 +40,59 @@ public class User implements Serializable {
 
      public void setId(Long id) {
         this.id = id;
-    }
+    } 
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public String getUnique_id() {
+		return unique_id;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
-    public String getMiddleName() {
-        return middleName;
-    }
+	public void setUnique_id(String unique_id) {
+		this.unique_id = unique_id;
+	}
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
-    public String getEmail() {
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getEncrypted_password() {
+		return encrypted_password;
+	}
+
+
+	public void setEncrypted_password(String encrypted_password) {
+		this.encrypted_password = encrypted_password;
+	}
+
+
+	public String getCreated_at() {
+		return created_at;
+	}
+
+
+	public void setCreated_at(String created_at) {
+		this.created_at = created_at;
+	}
+
+
+	public String getUpdated_at() {
+		return updated_at;
+	}
+
+
+	public void setUpdated_at(String updated_at) {
+		this.updated_at = updated_at;
+	}
+
+
+	public String getEmail() {
         return email;
     }
 
@@ -74,19 +100,5 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }        
+           
 }

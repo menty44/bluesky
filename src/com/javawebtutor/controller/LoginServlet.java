@@ -14,11 +14,11 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-	 String userId = request.getParameter("userId");	
+	 String email = request.getParameter("email");	
 	 String password = request.getParameter("password");
 	 LoginService loginService = new LoginService();
-	 boolean result = loginService.authenticateUser(userId, password);
-	 User user = loginService.getUserByUserId(userId);
+	 boolean result = loginService.authenticateUser(email, password);
+	 User user = loginService.getUserByUserId(email);
 	 if(result == true){
 		 request.getSession().setAttribute("user", user);		
 		 response.sendRedirect("home.jsp");

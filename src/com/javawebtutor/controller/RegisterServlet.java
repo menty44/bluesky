@@ -16,13 +16,16 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
 	 response.setContentType("text/html;charset=UTF-8");
 	 PrintWriter out = response.getWriter();
-	 String firstName = request.getParameter("firstName");
-	 String middleName = request.getParameter("middleName");
-	 String lastName = request.getParameter("lastName");
+	 //String firstName = request.getParameter("name");
+	 String name = request.getParameter("name");
 	 String email = request.getParameter("email");
-	 String userId = request.getParameter("userId");
-	 String password = request.getParameter("password");
-	 User user = new User(firstName,middleName,lastName, email,userId, password);
+	 String encrypted_password = request.getParameter("encrypted_password");
+//	 String email = request.getParameter("email");
+//	 String userId = request.getParameter("userId");
+//	 String password = request.getParameter("password");
+	 
+	 //User user = new User(name,email,encrypted_password);
+	 User user = new User(name, email, encrypted_password);
 			
 	 try {	
 		 RegisterService registerService = new RegisterService();
