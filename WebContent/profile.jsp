@@ -73,7 +73,7 @@
 					<a href="index.html" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
-							Ace Admin
+							Ace Admin  <%=new Date()%>
 						</small>
 					</a>
 				</div>
@@ -339,8 +339,11 @@
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
-									<small>Welcome,</small>
-									Jason
+									<small>Welxxcome,</small>
+									<%
+				 User user = (User) session.getAttribute("user");
+			 %>
+									Welcome <%= user.getName() + " " + user.getEmail()%>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -366,7 +369,7 @@
 								<li>
 									<a href="#">
 										<i class="ace-icon fa fa-power-off"></i>
-										Logout
+										<a href="logout.jsp">Logout</a>
 									</a>
 								</li>
 							</ul>
@@ -1205,7 +1208,7 @@
 													<div class="profile-info-name"> Username </div>
 
 													<div class="profile-info-value">
-														<span class="editable" id="username">alexdoe</span>
+														<span class="editable" id="username"><%= user.getName() %></span>
 													</div>
 												</div>
 
