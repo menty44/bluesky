@@ -19,6 +19,15 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+        <servlet-name>StoreController</servlet-name>
+        <servlet-class>com.javawebtutor.controller.StoreController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StoreController</servlet-name>
+        <url-pattern>/StoreController</url-pattern>
+    </servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
