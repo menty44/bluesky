@@ -67,7 +67,7 @@ for (User u : list) {
 
 <%}}else{
 SearchService udet1 = new SearchService();
-System.out.println("search_name**:"+search_name);
+System.out.println("search_name :"+search_name);
 List<User> list1 = udet1.getListOfUsers(search_name);
 for (User u1 : list1) {
 %>
@@ -77,8 +77,8 @@ for (User u1 : list1) {
 
 </TR>
 <%}}%>
-<TR><td><BUTTON type=”submit” value=save name=cmdadd onclick=”addpage()”>Add Page</BUTTON></td>
-<td><BUTTON type=”submit” value=edit name=cmdedit onclick=”Editpage()”>Edit Page</BUTTON></td></TR>
+<TR><td><BUTTON type="submit" value=save name=cmdadd onclick="addpage()">Add Page</BUTTON></td>
+<td><BUTTON type="submit" value=edit name=cmdedit onclick="Editpage()">Edit Page</BUTTON></td></TR>
 </TBODY>
 </table>
 </form>

@@ -23,7 +23,8 @@ public class SearchService {
 		tx = session.getTransaction();
 		tx.begin();
 		System.out.println("getListOfUsers(String searchName) method-"+searchName);
-		list = session.createQuery("from users where name like'"+searchName+"%'").list();
+		list = session.createQuery("from User where name like'" +searchName+ "%'").list();
+		
 		tx.commit();
 		} catch (Exception e) {
 		if (tx != null) {

@@ -36,7 +36,7 @@ public class LoginService {
             }
             e.printStackTrace();
         } finally {
-            session.close();
+            //session.close();
         }
         return user;
     }
@@ -56,7 +56,7 @@ public class LoginService {
             }
             e.printStackTrace();
         } finally {
-            session.close();
+           // session.close();
         }
         return list;
     }

@@ -23,7 +23,7 @@ public boolean register(User user){
 		 }
 		 e.printStackTrace();
 	 } finally {
-		 session.close();
+		 //session.close();
 	 }	
 	 return true;
 }
@@ -44,7 +44,7 @@ public boolean isUserExists(User user){
 			 tx.rollback();
 		 }
 	 }finally{
-		 session.close();
+		 //session.close();
 	 }
 	 return result;
 }
