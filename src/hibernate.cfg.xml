@@ -10,5 +10,6 @@
         <property name="show_sql">true</property>		
         <property name="hbm2ddl.auto">create/update</property>
         <mapping class="com.javawebtutor.model.User" /> 
+        <mapping class="com.javawebtutor.model.Store"></mapping>
     </session-factory>
 </hibernate-configuration>
