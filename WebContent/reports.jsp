@@ -14,7 +14,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Smart Shopper | Dashboard</title>
+		<title>Smart Shopper | Reports</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -299,7 +299,8 @@
 											</div>
 
 											<div class="infobox-data">
-												<span class="infobox-data-number">3</span>
+												<span class="infobox-data-number">
+												2</span>
 												<div class="infobox-content"><strong>Users</strong></div>
 											</div>
 
@@ -382,9 +383,9 @@
 										
 									</div>
 
-									<div class="vspace-6-sm"></div>
+									<div class="vspace-12-sm"></div>
 
-									<div class="col-bg-6">
+									<div class="col-bg-12">
 										<div class="widget-box">
 											<div class="widget-header widget-header-flat widget-header-small">
 												<h5 class="widget-title">

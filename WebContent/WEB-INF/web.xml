@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>smartshopper</display-name>
   <servlet>
     <display-name>LoginServlet</display-name>
@@ -19,15 +19,31 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-        <servlet-name>StoreController</servlet-name>
-        <servlet-class>com.javawebtutor.controller.StoreController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>StoreController</servlet-name>
-        <url-pattern>/StoreController</url-pattern>
-    </servlet-mapping>
+    <servlet-name>UserCRUDController</servlet-name>
+    <servlet-class>com.javawebtutor.controller.UserCRUDController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserCRUDController</servlet-name>
+    <url-pattern>/UserCRUDController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GroupCRUDController</servlet-name>
+    <servlet-class>com.javawebtutor.controller.GroupCRUDController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GroupCRUDController</servlet-name>
+    <url-pattern>/GroupCRUDController</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>StoreCRUDController</servlet-name>
+    <servlet-class>com.javawebtutor.controller.StoreCRUDController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StoreCRUDController</servlet-name>
+    <url-pattern>/StoreCRUDController</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>

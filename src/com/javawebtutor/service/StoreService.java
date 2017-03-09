@@ -50,4 +50,25 @@ public boolean isStoreExists(Store store){
 	 }
 	 return result;
 }
+
+public boolean Count(Store store){
+	 Session session = HibernateUtil.openSession();
+	 boolean result = false;
+	 Transaction tx = null;
+	 try{
+		 tx = session.getTransaction();
+		 tx.begin();
+		 Query count = session.createQuery("select count(*) from User");
+		 Store s = (Store)count.uniqueResult();
+		 //tx.commit();
+		 //if(s!=null) result = true;
+	 }catch(Exception ex){
+		 if(tx!=null){
+			 tx.rollback();
+		 }
+	 }finally{
+		 //session.close();
+	 }
+	 return result;
+}
 }

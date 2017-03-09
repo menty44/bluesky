@@ -14,7 +14,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Smart Shopper | Dashboard</title>
+		<title>Smart Shopper | Contact</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -204,7 +204,7 @@
 					</li>
 					
 					<li class="">
-						<a href="products.jsp">
+						<a href="contact.jsp">
 							<i class="menu-icon fa fa-list blue"></i>
 							<span class="menu-text"> Products </span>
 						</a>
@@ -265,7 +265,7 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="home.jsp">Home</a>
 							</li>
-							<li class="active">Dashboard</li>
+							<li class="active">Contact</li>
 						</ul><!-- /.breadcrumb -->
 
 						
@@ -299,7 +299,8 @@
 											</div>
 
 											<div class="infobox-data">
-												<span class="infobox-data-number">3</span>
+												<span class="infobox-data-number">
+												2</span>
 												<div class="infobox-content"><strong>Users</strong></div>
 											</div>
 
@@ -382,9 +383,9 @@
 										
 									</div>
 
-									<div class="vspace-6-sm"></div>
+									<div class="vspace-12-sm"></div>
 
-									<div class="col-bg-6">
+									<div class="col-bg-12">
 										<div class="widget-box">
 											<div class="widget-header widget-header-flat widget-header-small">
 												<h5 class="widget-title">

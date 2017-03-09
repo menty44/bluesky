@@ -12,13 +12,48 @@ import javax.persistence.Table;
 public class User implements Serializable {
     
     @Id @GeneratedValue
-    private Long id;
+    private Long userid;
     private String unique_id;
     private String name;
     private String email;
+    private String phoneno;
+    private String idpass;
+    private String status;
     private String encrypted_password;
     private String created_at;
     private String updated_at;
+    
+    
+    public String getIdpass() {
+		return idpass;
+	}
+
+
+	public void setIdpass(String idpass) {
+		this.idpass = idpass;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public String getPhoneno() {
+		return phoneno;
+	}
+
+
+	public void setPhoneno(String phoneno) {
+		this.phoneno = phoneno;
+	}
+
+	
 
     public User() {
     }
@@ -34,16 +69,26 @@ public class User implements Serializable {
     }
 
 
-    public Long getId() {
-        return id;
-    }
-
-     public void setId(Long id) {
-        this.id = id;
-    } 
+//    public Long getId() {
+//        return id;
+//    }
+//
+//     public void setId(Long id) {
+//        this.id = id;
+//    } 
 
     public String getUnique_id() {
 		return unique_id;
+	}
+
+
+	public Long getUserid() {
+		return userid;
+	}
+
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
 	}
 
 

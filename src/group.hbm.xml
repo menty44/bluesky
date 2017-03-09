@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.daniel.model.Group" table="groups">
+        <id name="userid" type="int" column="userid">
+            <generator class="increment" />
+        </id>
+        <property name="uuid">
+            <column name="uuid" />
+        </property>
+        <property name="name">
+            <column name="name" />
+        </property>
+        <property name="description">
+            <column name="description" />
+        </property>
+        <property name="createdon">
+            <column name="createdon" />
+        </property>
+    </class>
+</hibernate-mapping>

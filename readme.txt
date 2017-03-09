@@ -2,7 +2,7 @@
 #      Technologies used:                    #
 ##############################################
 
-Java
+Java(Hibernate and restful microservice)
 Jsp
 php (Raw)
 Mysql
