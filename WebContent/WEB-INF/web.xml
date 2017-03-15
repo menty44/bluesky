@@ -59,8 +59,7 @@
     <servlet-name>WebservicetwoController</servlet-name>
     <url-pattern>/WebservicetwoController</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>ProductCRUDController</servlet-name>
     <servlet-class>com.javawebtutor.controller.ProductCRUDController</servlet-class>
   </servlet>
@@ -69,7 +68,17 @@
     <url-pattern>/ProductCRUDController</url-pattern>
   </servlet-mapping>
   
-  
+  <servlet>
+<description></description>
+<display-name>FeedServlet</display-name>
+<servlet-name>FeedServlet</servlet-name>
+<servlet-class>com.javawebtutor.controller.FeedServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>FeedServlet</servlet-name>
+<url-pattern>/FeedServlet</url-pattern>
+</servlet-mapping>
+
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
