@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.daniel.model.Webservicetwo" table="webservicetwo">
+    
+        <id name="employeeid" type="int" column="employeeid">
+            <generator class="increment" />
+        </id>
+        
+        <property name="name">
+            <column name="name" />
+        </property>
+        
+        <property name="email">
+            <column name="email" />
+        </property>
+        
+        <property name="age">
+            <column name="age" />
+        </property>
+        
+        <property name="department">
+            <column name="department" />
+        </property>  
+        
+        <property name="reportingdate">
+            <column name="reportingdate" />
+        </property>     
+        
+    </class>
+</hibernate-mapping>

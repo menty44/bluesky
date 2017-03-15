@@ -7,18 +7,17 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-//import com.daniel.model.User;
-import com.javawebtutor.model.User;
+import com.daniel.model.Webservice;
 import com.daniel.util.HibernateUtil;
 
-public class UserDao {
+public class WebserviceDao {
 
-    public void addUser(User user) {
+    public void addWebservice(Webservice webservice) {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            session.save(user);
+            session.save(webservice);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -31,13 +30,13 @@ public class UserDao {
         }
     }
 
-    public void deleteUser(int userid) {
+    public void deleteWebservice(int webid) {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            User user = (User) session.load(User.class, new Integer(userid));
-            session.delete(user);
+            Webservice webservice = (Webservice) session.load(Webservice.class, new Integer(webid));
+            session.delete(webservice);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -50,12 +49,12 @@ public class UserDao {
         }
     }
 
-    public void updateUser(User user) {
+    public void updateWebservice(Webservice webservice) {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            session.update(user);
+            session.update(webservice);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -68,64 +67,45 @@ public class UserDao {
         }
     }
 
-    public List<User> getAllUsersDB() {
-        List<User> users = new ArrayList<User>();
+    public List<Webservice> getAllWebserviceDB() {
+        List<Webservice> webservices = new ArrayList<Webservice>();
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            users = session.createQuery("from User").list();
+            webservices = session.createQuery("from Webservice").list();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
             session.flush();
             session.close();
         }
-        return users;
-    }
-    
-    public long  getCount() {
-        User count1 = new User();
-        Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        //try {
-            trns = session.beginTransaction();
-            //count = session.createQuery(" count(*) from User").list();
-            long count = (long)session.createQuery("select count(*) from User").uniqueResult();
-//        } catch (RuntimeException e) {
-//            e.printStackTrace();
-//        }
-//        finally {
-//            session.flush();
-//            session.close();
-//        }
-        //return count;
-		return count;
+        return webservices;
     }
 
-    public User getUserById(int userid) {
-        User user = null;
+    public Webservice getWebserviceById(int webid) {
+    	Webservice webservice = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            String queryString = "from User where id = :id";
+            String queryString = "from Webservice where id = :id";
             Query query = session.createQuery(queryString);
-            query.setInteger("id", userid);
-            user = (User) query.uniqueResult();
+            query.setInteger("id", webid);
+            webservice = (Webservice) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
             session.flush();
             session.close();
         }
-        return user;
+        return webservice;
     }
     
     
     
-    public List<User> getListOfUsers(String searchName){
-    	List<User> list = new ArrayList<User>();
+    public List<Webservice> getListOfWebservice(String searchName){
+    	List<Webservice> list = new ArrayList<Webservice>();
     	Session session = HibernateUtil.getSessionFactory().openSession();
     	Transaction tx = null;
     	//Session session = sessFact.openSession();
@@ -134,8 +114,8 @@ public class UserDao {
     	tx = session.getTransaction();
     	tx.begin();
     	
-    	System.out.println("getListOfUsers(String searchName) method-"+searchName);
-    	list = session.createQuery("from User where name like'"+searchName+"%'").list();
+    	System.out.println("getListOfWebservice(String searchName) method-"+searchName);
+    	list = session.createQuery("from Webservice where name like'"+searchName+"%'").list();
     	tx.commit();
     	} catch (Exception e) {
     	if (tx != null) {

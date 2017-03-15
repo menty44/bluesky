@@ -13,25 +13,26 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
+//import com.programmingfree.dao.CrudDao;
+//import com.programmingfree.model.User;
+import com.daniel.model.Product;
+import com.daniel.dao.ProductDao;
 
-import com.daniel.model.Store;
-import com.daniel.dao.StoreDao;
 
 
-
-public class StoreCRUDController extends HttpServlet {
+public class ProductCRUDController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private StoreDao dao;
+	private ProductDao dao;
     
-    public StoreCRUDController() {
-        dao=new StoreDao();
+    public ProductCRUDController() {
+        dao=new ProductDao();
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(request.getParameter("action")!=null){
-			List<Store> stores=new ArrayList<Store>();
+			List<Product> products=new ArrayList<Product>();
 			String action=(String)request.getParameter("action");
 			Gson gson = new Gson();
 			response.setContentType("application/json");
@@ -40,9 +41,9 @@ public class StoreCRUDController extends HttpServlet {
 				try{						
 				//Fetch Data from User Table
 				//lstUser=dao.getAllUsers();
-					stores=dao.getAllStoreDB();
+					products=dao.getAllProductDB();
 				//Convert Java Object to Json				
-				JsonElement element = gson.toJsonTree(stores, new TypeToken<List<Store>>() {}.getType());
+				JsonElement element = gson.toJsonTree(products, new TypeToken<List<Product>>() {}.getType());
 				JsonArray jsonArray = element.getAsJsonArray();
 				String listData=jsonArray.toString();				
 				//Return Json in the format required by jTable plugin
@@ -55,39 +56,51 @@ public class StoreCRUDController extends HttpServlet {
 				}				
 			}
 			else if(action.equals("create") || action.equals("update")){
-				Store store=new Store();
-				if(request.getParameter("userid")!=null){				   
-				   int storeid=Integer.parseInt(request.getParameter("storeid"));
-				   store.setStoreid(storeid);
-				}
-				if(request.getParameter("uuid")!=null){
-					String uuid=(String)request.getParameter("uuid");
-					//group.setU(uuid);
-					store.setUuid(uuid);
-				}
+				Product product=new Product();
+//				if(request.getParameter("prodid")==null){				   
+//				   int prodid=Integer.parseInt(request.getParameter("prodid"));
+//				   product.setProdid(prodid);
+//				}
 				if(request.getParameter("name")!=null){
-				   String name=(String)request.getParameter("name");
-				   store.setName(name);
+					String name=(String)request.getParameter("name");
+					//group.setU(uuid);
+					product.setName(name);
 				}
-				if(request.getParameter("phoneno")!=null){
-				   String phoneno=(String)request.getParameter("phoneno");
-				   store.setPhoneno(phoneno);
+				if(request.getParameter("description")!=null){
+				   String description=(String)request.getParameter("description");
+				   product.setDescription(description);
 				}
-				if(request.getParameter("email")!=null){
-					   String email=(String)request.getParameter("email");
-					   store.setEmail(email);
+				if(request.getParameter("suggestedunitprice")!=null){
+				   String suggestedunitprice=(String)request.getParameter("suggestedunitprice");
+				   product.setSuggestedunitprice(suggestedunitprice);
+				}
+				if(request.getParameter("buyunitprice")!=null){
+					   String buyunitprice=(String)request.getParameter("buyunitprice");
+					   product.setBuyunitprice(buyunitprice);
+					}
+				if(request.getParameter("unitsinstock")!=null){
+					   String unitsinstock=(String)request.getParameter("unitsinstock");
+					   product.setUnitsinstock(unitsinstock);
+					}
+				if(request.getParameter("productcode")!=null){
+					   String productcode=(String)request.getParameter("productcode");
+					   product.setProductcode(productcode);
+					}
+				if(request.getParameter("uuid")!=null){
+					   String uuid=(String)request.getParameter("uuid");
+					   product.setUuid(uuid);
 					}
 				try{											
 					if(action.equals("create")){//Create new record
-						dao.addStore(store);					
-						stores.add(store);
+						dao.addProduct(product);					
+						products.add(product);
 						//Convert Java Object to Json				
-						String json=gson.toJson(store);					
+						String json=gson.toJson(product);					
 						//Return Json in the format required by jTable plugin
 						String listData="{\"Result\":\"OK\",\"Record\":"+json+"}";											
 						response.getWriter().print(listData);
 					}else if(action.equals("update")){//Update existing record
-						dao.updateStore(store);
+						dao.updateProduct(product);
 						String listData="{\"Result\":\"OK\"}";									
 						response.getWriter().print(listData);
 					}
@@ -97,9 +110,9 @@ public class StoreCRUDController extends HttpServlet {
 				}
 			}else if(action.equals("delete")){//Delete record
 				try{
-					if(request.getParameter("userid")!=null){
+					if(request.getParameter("prodid")!=null){
 						String id=(String)request.getParameter("userid");
-						dao.deleteStore(Integer.parseInt(id));
+						dao.deleteProduct(Integer.parseInt(id));
 						String listData="{\"Result\":\"OK\"}";								
 						response.getWriter().print(listData);
 					}
@@ -115,7 +128,7 @@ public class StoreCRUDController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("action")!=null){
-			List<Store> stores=new ArrayList<Store>();
+			List<Product> products=new ArrayList<Product>();
 			String action=(String)request.getParameter("action");
 			Gson gson = new Gson();
 			response.setContentType("application/json");
@@ -124,9 +137,9 @@ public class StoreCRUDController extends HttpServlet {
 				try{						
 				//Fetch Data from User Table
 				//lstUser=dao.getAllUsers();
-					stores=dao.getAllStoreDB();
+					products=dao.getAllProductDB();
 				//Convert Java Object to Json				
-				JsonElement element = gson.toJsonTree(stores, new TypeToken<List<Store>>() {}.getType());
+				JsonElement element = gson.toJsonTree(products, new TypeToken<List<Product>>() {}.getType());
 				JsonArray jsonArray = element.getAsJsonArray();
 				String listData=jsonArray.toString();				
 				//Return Json in the format required by jTable plugin
@@ -139,39 +152,51 @@ public class StoreCRUDController extends HttpServlet {
 				}				
 			}
 			else if(action.equals("create") || action.equals("update")){
-				Store store=new Store();
-				if(request.getParameter("userid")!=null){				   
-				   int storeid=Integer.parseInt(request.getParameter("storeid"));
-				   store.setStoreid(storeid);
-				}
-				if(request.getParameter("uuid")!=null){
-					String uuid=(String)request.getParameter("uuid");
-					//group.setU(uuid);
-					store.setUuid(uuid);
-				}
+				Product product=new Product();
+//				if(request.getParameter("prodid")==null){				   
+//				   int prodid=Integer.parseInt(request.getParameter("prodid"));
+//				   product.setProdid(prodid);
+//				}
 				if(request.getParameter("name")!=null){
-				   String name=(String)request.getParameter("name");
-				   store.setName(name);
+					String name=(String)request.getParameter("name");
+					//group.setU(uuid);
+					product.setName(name);
 				}
-				if(request.getParameter("phoneno")!=null){
-				   String phoneno=(String)request.getParameter("phoneno");
-				   store.setPhoneno(phoneno);
+				if(request.getParameter("description")!=null){
+				   String description=(String)request.getParameter("description");
+				   product.setDescription(description);
 				}
-				if(request.getParameter("email")!=null){
-					   String email=(String)request.getParameter("email");
-					   store.setEmail(email);
+				if(request.getParameter("suggestedunitprice")!=null){
+				   String suggestedunitprice=(String)request.getParameter("suggestedunitprice");
+				   product.setSuggestedunitprice(suggestedunitprice);
+				}
+				if(request.getParameter("buyunitprice")!=null){
+					   String buyunitprice=(String)request.getParameter("buyunitprice");
+					   product.setBuyunitprice(buyunitprice);
+					}
+				if(request.getParameter("unitsinstock")!=null){
+					   String unitsinstock=(String)request.getParameter("unitsinstock");
+					   product.setUnitsinstock(unitsinstock);
+					}
+				if(request.getParameter("productcode")!=null){
+					   String productcode=(String)request.getParameter("productcode");
+					   product.setProductcode(productcode);
+					}
+				if(request.getParameter("uuid")!=null){
+					   String uuid=(String)request.getParameter("uuid");
+					   product.setUuid(uuid);
 					}
 				try{											
 					if(action.equals("create")){//Create new record
-						dao.addStore(store);					
-						stores.add(store);
+						dao.addProduct(product);					
+						products.add(product);
 						//Convert Java Object to Json				
-						String json=gson.toJson(store);					
+						String json=gson.toJson(product);					
 						//Return Json in the format required by jTable plugin
 						String listData="{\"Result\":\"OK\",\"Record\":"+json+"}";											
 						response.getWriter().print(listData);
 					}else if(action.equals("update")){//Update existing record
-						dao.updateStore(store);
+						dao.updateProduct(product);
 						String listData="{\"Result\":\"OK\"}";									
 						response.getWriter().print(listData);
 					}
@@ -181,9 +206,9 @@ public class StoreCRUDController extends HttpServlet {
 				}
 			}else if(action.equals("delete")){//Delete record
 				try{
-					if(request.getParameter("userid")!=null){
+					if(request.getParameter("prodid")!=null){
 						String id=(String)request.getParameter("userid");
-						dao.deleteStore(Integer.parseInt(id));
+						dao.deleteProduct(Integer.parseInt(id));
 						String listData="{\"Result\":\"OK\"}";								
 						response.getWriter().print(listData);
 					}

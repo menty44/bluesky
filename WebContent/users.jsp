@@ -348,7 +348,8 @@
                 listAction: 'UserCRUDController?action=list',
                 createAction:'UserCRUDController?action=create',
                 updateAction: 'UserCRUDController?action=update',
-                deleteAction: 'UserCRUDController?action=delete'
+                deleteAction: 'UserCRUDController?action=delete',
+                countAction: 'UserCRUDController?action=count'
             },
             fields: {
             	userid: {

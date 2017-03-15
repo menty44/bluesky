@@ -2,23 +2,20 @@ package com.daniel.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-//import com.daniel.model.User;
-import com.javawebtutor.model.User;
+import com.daniel.model.Product;
 import com.daniel.util.HibernateUtil;
 
-public class UserDao {
+public class ProductDao {
 
-    public void addUser(User user) {
+    public void addProduct(Product product) {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            session.save(user);
+            session.save(product);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -31,13 +28,13 @@ public class UserDao {
         }
     }
 
-    public void deleteUser(int userid) {
+    public void deleteProduct(int id) {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            User user = (User) session.load(User.class, new Integer(userid));
-            session.delete(user);
+            Product product = (Product) session.load(Product.class, new Integer(id));
+            session.delete(product);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -50,12 +47,12 @@ public class UserDao {
         }
     }
 
-    public void updateUser(User user) {
+    public void updateProduct(Product product) {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            session.update(user);
+            session.update(product);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -68,83 +65,38 @@ public class UserDao {
         }
     }
 
-    public List<User> getAllUsersDB() {
-        List<User> users = new ArrayList<User>();
+    public List<Product> getAllProductDB() {
+        List<Product> products = new ArrayList<Product>();
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            users = session.createQuery("from User").list();
+            products = session.createQuery("from Product").list();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
             session.flush();
             session.close();
         }
-        return users;
-    }
-    
-    public long  getCount() {
-        User count1 = new User();
-        Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        //try {
-            trns = session.beginTransaction();
-            //count = session.createQuery(" count(*) from User").list();
-            long count = (long)session.createQuery("select count(*) from User").uniqueResult();
-//        } catch (RuntimeException e) {
-//            e.printStackTrace();
-//        }
-//        finally {
-//            session.flush();
-//            session.close();
-//        }
-        //return count;
-		return count;
+        return products;
     }
 
-    public User getUserById(int userid) {
-        User user = null;
+    public Product getProductById(int prodid) {
+    	Product product = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            String queryString = "from User where id = :id";
+            String queryString = "from Product where id = :id";
             Query query = session.createQuery(queryString);
-            query.setInteger("id", userid);
-            user = (User) query.uniqueResult();
+            query.setInteger("id", prodid);
+            product = (Product) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
             session.flush();
             session.close();
         }
-        return user;
+        return product;
     }
-    
-    
-    
-    public List<User> getListOfUsers(String searchName){
-    	List<User> list = new ArrayList<User>();
-    	Session session = HibernateUtil.getSessionFactory().openSession();
-    	Transaction tx = null;
-    	//Session session = sessFact.openSession();
-    	tx = session.beginTransaction();
-    	try {
-    	tx = session.getTransaction();
-    	tx.begin();
-    	
-    	System.out.println("getListOfUsers(String searchName) method-"+searchName);
-    	list = session.createQuery("from User where name like'"+searchName+"%'").list();
-    	tx.commit();
-    	} catch (Exception e) {
-    	if (tx != null) {
-    	tx.rollback();
-    	}
-    	e.printStackTrace();
-    	} finally {
-    	session.close();
-    	}
-    	return list;
-    	}
 }

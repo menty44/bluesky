@@ -3,7 +3,7 @@
 <%@page import="com.javawebtutor.service.LoginService"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.javawebtutor.model.User"%>
-<%@page import="com.javawebtutor.model.Store"%>
+<%@page import="com.daniel.model.Product"%>
 <%@page import="org.hibernate.Query"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="org.hibernate.Transaction"%>
@@ -18,6 +18,10 @@
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- Include one of jTable styles. -->
+		<link href="css/metro/crimson/jtable.css" rel="stylesheet" type="text/css" />
+		<link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
 
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -288,141 +292,13 @@
 							<div class="col-bg-12">
 								<!-- PAGE CONTENT BEGINS -->
 								
-
-								<div class="row">
-									<div class="space-6"></div>
-
-									<div class="col-bg-12 infobox-container">
-										<div class="infobox infobox-green">
-											<div class="infobox-icon">
-												<i class="ace-icon fa fa-comments"></i>
-											</div>
-
-											<div class="infobox-data">
-												<span class="infobox-data-number">
-												2</span>
-												<div class="infobox-content"><strong>Users</strong></div>
-											</div>
-
-											
-										</div>
-
-										<div class="infobox infobox-blue">
-											<div class="infobox-icon">
-												<i class="ace-icon fa fa-twitter"></i>
-											</div>
-
-											<div class="infobox-data">
-												<span class="infobox-data-number">11</span>
-												<div class="infobox-content"><strong>Groups</strong></div>
-											</div>
-
-											
-										</div>
-
-										<div class="infobox infobox-pink">
-											<div class="infobox-icon">
-												<i class="ace-icon fa fa-shopping-cart"></i>
-											</div>
-
-											<div class="infobox-data">
-												<span class="infobox-data-number">8</span>
-												<div class="infobox-content">Stores</div>
-											</div>
-											
-										</div>
-
-										<div class="infobox infobox-red">
-											<div class="infobox-icon">
-												<i class="ace-icon fa fa-flask"></i>
-											</div>
-
-											<div class="infobox-data">
-												<span class="infobox-data-number">7</span>
-												<div class="infobox-content">Day sales</div>
-											</div>
-										</div>
-
-										<!--<div class="infobox infobox-orange2">
-											<div class="infobox-chart">
-												<span class="sparkline" data-values="196,128,202,177,154,94,100,170,224"></span>
-											</div>
-
-											<div class="infobox-data">
-												<span class="infobox-data-number">6,251</span>
-												<div class="infobox-content">pageviews</div>
-											</div>
-
-											<div class="badge badge-success">
-												7.2%
-												<i class="ace-icon fa fa-arrow-up"></i>
-											</div>
-										</div>-->
-
-										<!-- <div class="infobox infobox-blue2">
-											<div class="infobox-progress">
-												<div class="easy-pie-chart percentage" data-percent="42" data-size="46">
-													<span class="percent">42</span>%
-												</div>
-											</div>
-
-											<div class="infobox-data">
-												<span class="infobox-text">traffic used</span>
-
-												<div class="infobox-content">
-													<span class="bigger-110">~</span>
-													58GB remaining
-												</div>
-											</div>
-										</div>-->
-
-										<div class="space-6"></div>
-
-										
-
-										
-									</div>
-
-									<div class="vspace-12-sm"></div>
-
-									<div class="col-bg-12">
-										<div class="widget-box">
-											<div class="widget-header widget-header-flat widget-header-small">
-												<h5 class="widget-title">
-													<i class="ace-icon fa fa-signal"></i>
-													Analytics
-												</h5>
-
-												<div class="widget-toolbar no-border">
-													
-												</div>
-											</div>
-
-											<div class="widget-body">
-												<div class="widget-main">
-													<!-- <div id="piechart-placeholder"></div> -->
-
-													<div class="hr hr8 hr-double"></div>
-
-													
-												</div><!-- /.widget-main -->
-											</div><!-- /.widget-body -->
-										</div><!-- /.widget-box -->
-									</div><!-- /.col -->
-								</div><!-- /.row -->
-
-								<div class="hr hr32 hr-dotted"></div>
-
-								
-								<div class="hr hr32 hr-dotted"></div>
-
-								
-										</div><!-- /.widget-box -->
-									</div><!-- /.col -->
-
+								<div style="width:100%;margin-right:0%;margin-left:0%;text-align:center;">
+							<h1>Products</h1>
+							<!-- <h4>Demo by Priya Darshini, Tutorial at <a href="http://www.programming-free.com/2013/08/ajax-based-crud-operations-in-java-web.html">www.programming-free.com</a></h4> -->
+							<div id="PersonTableContainer"></div>
+							</div>
 									
 								</div><!-- /.row -->
-
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -471,6 +347,67 @@
 		<!--[if IE]>
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
+<!-- Include jTable script file. -->
+<script src="js/jquery-1.8.2.js" type="text/javascript"></script>
+<script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
+<script src="js/jquery.jtable.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#PersonTableContainer').jtable({
+            title: 'Table of group',
+            actions: {
+                listAction: 'ProductCRUDController?action=list',
+                createAction:'ProductCRUDController?action=create',
+                updateAction: 'ProductCRUDController?action=update',
+                deleteAction: 'ProductCRUDController?action=delete'
+            },
+            fields: {
+            	prodid: {
+                	title:'Product NO',
+                    key: true,
+                    list: true,
+                    create:false
+                },
+                name: {
+                    title: 'Name',
+                    width: '30%',
+                    edit:true
+                },
+                description: {
+                    title: 'Description',
+                    width: '30%',
+                    edit:true
+                },
+                suggestedunitprice: {
+                    title: 'Suggested Price',
+                    width: '20%',
+                    edit: true
+                },
+                buyunitprice: {
+                    title: 'Buying Price',
+                    width: '20%',
+                    edit: true
+                },
+                unitsinstock: {
+                    title: 'Units in Stock',
+                    width: '20%',
+                    edit: true
+                },
+                productcode: {
+                    title: 'Product Code',
+                    width: '20%',
+                    edit: true
+                },
+                uuid: {
+                    title: 'Unique ID',
+                    width: '20%',
+                    edit: true
+                }
+            }
+        });
+        $('#PersonTableContainer').jtable('load');
+    });
+</script>
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>

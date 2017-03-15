@@ -35,8 +35,7 @@
     <servlet-name>GroupCRUDController</servlet-name>
     <url-pattern>/GroupCRUDController</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>StoreCRUDController</servlet-name>
     <servlet-class>com.javawebtutor.controller.StoreCRUDController</servlet-class>
   </servlet>
@@ -44,6 +43,33 @@
     <servlet-name>StoreCRUDController</servlet-name>
     <url-pattern>/StoreCRUDController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>WebserviceController</servlet-name>
+    <servlet-class>com.javawebtutor.controller.WebserviceController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebserviceController</servlet-name>
+    <url-pattern>/WebserviceController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>WebservicetwoController</servlet-name>
+    <servlet-class>com.javawebtutor.controller.WebservicetwoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebservicetwoController</servlet-name>
+    <url-pattern>/WebservicetwoController</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ProductCRUDController</servlet-name>
+    <servlet-class>com.javawebtutor.controller.ProductCRUDController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductCRUDController</servlet-name>
+    <url-pattern>/ProductCRUDController</url-pattern>
+  </servlet-mapping>
+  
+  
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>

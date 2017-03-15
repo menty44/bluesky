@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.daniel.model.Webservice" table="webservice">
+    
+        <id name="webid" type="int" column="webid">
+            <generator class="increment" />
+        </id>
+        
+        <property name="name">
+            <column name="name" />
+        </property>
+        
+        <property name="nationalid">
+            <column name="nationalid" />
+        </property>
+        
+        <property name="mobile">
+            <column name="mobile" />
+        </property>
+        
+        <property name="hiddenkey">
+            <column name="hiddenkey" />
+        </property>      
+        
+    </class>
+</hibernate-mapping>
