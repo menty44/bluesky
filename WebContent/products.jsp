@@ -355,6 +355,9 @@
     $(document).ready(function () {
         $('#PersonTableContainer').jtable({
             title: 'Table of group',
+            paging: true,
+            sorting: true,
+            defaultSorting: 'name ASC',
             actions: {
                 listAction: 'ProductCRUDController?action=list',
                 createAction:'ProductCRUDController?action=create',

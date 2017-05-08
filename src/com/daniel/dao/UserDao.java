@@ -26,8 +26,9 @@ public class UserDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -45,8 +46,9 @@ public class UserDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -63,8 +65,9 @@ public class UserDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -78,8 +81,9 @@ public class UserDao {
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
         return users;
     }
@@ -116,8 +120,9 @@ public class UserDao {
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
         return user;
     }
@@ -143,7 +148,9 @@ public class UserDao {
     	}
     	e.printStackTrace();
     	} finally {
-    	session.close();
+//    		session.flush();
+//    		session.clear(); 
+//            session.disconnect();
     	}
     	return list;
     	}

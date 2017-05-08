@@ -19,15 +19,15 @@ public class HttpURLConnectionExample {
 		System.out.println("Testing 1 - Send Http GET request");
 		http.sendGet();
 
-		System.out.println("\nTesting 2 - Send Http POST request");
-		http.sendPost();
+//		System.out.println("\nTesting 2 - Send Http POST request");
+//		http.sendPost();
 
 	}
 
 	// HTTP GET request
 	private void sendGet() throws Exception {
 
-		String url = "http://localhost:8080/smartshopper/WebserviceController?action=list";
+		String url = "http://localhost:8080/smartshopper/UserCRUDController?action=count";
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();

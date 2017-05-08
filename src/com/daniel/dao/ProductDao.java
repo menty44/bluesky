@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import com.daniel.model.Product;
 import com.daniel.util.HibernateUtil;
+//import com.javawebtutor.model.User;
 
 public class ProductDao {
 
@@ -23,8 +24,9 @@ public class ProductDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -42,8 +44,9 @@ public class ProductDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -60,8 +63,9 @@ public class ProductDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -75,8 +79,9 @@ public class ProductDao {
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
         return products;
     }
@@ -94,9 +99,29 @@ public class ProductDao {
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
         return product;
+    }
+    
+    public long  getCount() {
+        Product count1 = new Product();
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        //try {
+            trns = session.beginTransaction();
+            //count = session.createQuery(" count(*) from User").list();
+            long count = (long)session.createQuery("select count(*) from Product").uniqueResult();
+//        } catch (RuntimeException e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            session.flush();
+//            session.close();
+//        }
+        //return count;
+		return count;
     }
 }

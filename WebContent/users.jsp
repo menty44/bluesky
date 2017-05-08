@@ -7,6 +7,7 @@
 <%@page import="org.hibernate.Query"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="org.hibernate.Transaction"%>
+<%@page import="com.blaqueyard.tests.user"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -344,6 +345,9 @@
     $(document).ready(function () {
         $('#PersonTableContainer').jtable({
             title: 'Table of users',
+            paging: true,
+            sorting: true,
+            defaultSorting: 'name ASC',
             actions: {
                 listAction: 'UserCRUDController?action=list',
                 createAction:'UserCRUDController?action=create',

@@ -54,6 +54,35 @@ public class StoreCRUDController extends HttpServlet {
 					ex.printStackTrace();
 				}				
 			}
+			
+			//getting count from the db
+			if(action.equals("count")){
+				try{						
+				//Fetch Data from User Table
+				long cnt1 = dao.getCount();
+				//String fred = dao.getCount();
+					//users=dao.getCount();
+				//Convert Java Object to Json				
+				//JsonElement element = gson.toJsonTree(users, new TypeToken<List<User>>() {}.getType());
+//					JsonElement element = gson.toJsonTree(users, new TypeToken() {
+//					});
+//				JsonArray jsonArray = element.getAsJsonArray();
+//				String listData=jsonArray.toString();	
+				String listData= Long.toString(cnt1)  ;
+				//Return Json in the format required by jTable plugin
+				
+				//original json data to be consumed ##freds hack
+				//listData="{\"Result\":\"OK\",\"DatabaseCount\":"+listData+"}";
+				
+				//freds list data hack in order to fetch thr count only..wunt return json response
+				listData = listData;
+				response.getWriter().print(listData);
+				}catch(Exception ex){
+					String error="{\"Result\":\"ERROR\",\"Message\":"+ex.getMessage()+"}";
+					response.getWriter().print(error);
+					ex.printStackTrace();
+				}				
+			}
 			else if(action.equals("create") || action.equals("update")){
 				Store store=new Store();
 				if(request.getParameter("userid")!=null){				   

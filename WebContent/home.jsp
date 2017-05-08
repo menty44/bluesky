@@ -7,6 +7,11 @@
 <%@page import="org.hibernate.Query"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="org.hibernate.Transaction"%>
+<%@page import="com.blaqueyard.tests.user"%>
+<%@page import="com.blaqueyard.tests.store"%>
+<%@page import="com.blaqueyard.tests.group"%>
+<%@page import="com.blaqueyard.tests.sales"%>
+<%@page import="com.blaqueyard.tests.product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -248,6 +253,14 @@
 						<b class="arrow"></b>
 					</li>	
 					
+					<li class="">
+						<a href="article.jsp">
+							<i class="menu-icon fa fa-user"></i>
+							<span class="menu-text"> Article</span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
 
 					
 				</ul><!-- /.nav-list -->
@@ -299,7 +312,26 @@
 											</div>
 
 											<div class="infobox-data">
-												<span class="infobox-data-number">3</span>
+												<span class="infobox-data-number">
+												
+												
+												<% 
+												user object1 = new user();
+												
+												try{
+													
+												   String  us = object1.sendGET();
+												   //{throw new RuntimeException("Ajali kafanyika papa hapa");}
+												   //System.out.println(us);
+												}catch(Exception e){
+													e.printStackTrace();
+												}											
+												
+												
+												   %>
+												   
+												   
+												   <b><%= object1.sendGET()%></b> </span>
 												<div class="infobox-content"><strong>Users</strong></div>
 											</div>
 
@@ -312,7 +344,26 @@
 											</div>
 
 											<div class="infobox-data">
-												<span class="infobox-data-number">11</span>
+												<span class="infobox-data-number">
+												
+												
+												<% 
+												group object2 = new group();
+												
+												try{
+													
+												   String  us = object2.sendGET();
+												   //{throw new RuntimeException("Ajali kafanyika papa hapa");}
+												   //System.out.println(us);
+												}catch(Exception e){
+													e.printStackTrace();
+												}											
+												
+												
+												   %>
+												   
+												   
+												   <b><%= object2.sendGET()%></b> </span>
 												<div class="infobox-content"><strong>Groups</strong></div>
 											</div>
 
@@ -325,7 +376,26 @@
 											</div>
 
 											<div class="infobox-data">
-												<span class="infobox-data-number">8</span>
+												<span class="infobox-data-number">
+												
+												
+												<% 
+												store object3 = new store();
+												
+												try{
+													
+												   String  us = object3.sendGET();
+												   //{throw new RuntimeException("Ajali kafanyika papa hapa");}
+												   //System.out.println(us);
+												}catch(Exception e){
+													e.printStackTrace();
+												}											
+												
+												
+												   %>
+												   
+												   
+												   <b><%= object3.sendGET()%></b> </span>
 												<div class="infobox-content">Stores</div>
 											</div>
 											
@@ -337,8 +407,28 @@
 											</div>
 
 											<div class="infobox-data">
-												<span class="infobox-data-number">7</span>
-												<div class="infobox-content">Day sales</div>
+												<span class="infobox-data-number">
+												
+												
+												<% 
+                                                  product object4 = new product();
+												
+												try{
+													
+												   String  us = object4.sendGET();
+												   //{throw new RuntimeException("Ajali kafanyika papa hapa");}
+												   //System.out.println(us);
+												}catch(Exception e){
+													e.printStackTrace();
+												}	
+																						
+												
+												
+												   %>
+												   
+												   
+												   <b><%= object4.sendGET()%></b> </span>
+												<div class="infobox-content">Product</div>
 											</div>
 										</div>
 

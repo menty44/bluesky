@@ -35,6 +35,16 @@
     <servlet-name>GroupCRUDController</servlet-name>
     <url-pattern>/GroupCRUDController</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>ArticleCRUDController</servlet-name>
+    <servlet-class>com.javawebtutor.controller.ArticleCRUDController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleCRUDController</servlet-name>
+    <url-pattern>/ArticleCRUDController</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>StoreCRUDController</servlet-name>
     <servlet-class>com.javawebtutor.controller.StoreCRUDController</servlet-class>
@@ -44,22 +54,6 @@
     <url-pattern>/StoreCRUDController</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>WebserviceController</servlet-name>
-    <servlet-class>com.javawebtutor.controller.WebserviceController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>WebserviceController</servlet-name>
-    <url-pattern>/WebserviceController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>WebservicetwoController</servlet-name>
-    <servlet-class>com.javawebtutor.controller.WebservicetwoController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>WebservicetwoController</servlet-name>
-    <url-pattern>/WebservicetwoController</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>ProductCRUDController</servlet-name>
     <servlet-class>com.javawebtutor.controller.ProductCRUDController</servlet-class>
   </servlet>
@@ -67,18 +61,6 @@
     <servlet-name>ProductCRUDController</servlet-name>
     <url-pattern>/ProductCRUDController</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-<description></description>
-<display-name>FeedServlet</display-name>
-<servlet-name>FeedServlet</servlet-name>
-<servlet-class>com.javawebtutor.controller.FeedServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-<servlet-name>FeedServlet</servlet-name>
-<url-pattern>/FeedServlet</url-pattern>
-</servlet-mapping>
-
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>

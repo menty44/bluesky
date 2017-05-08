@@ -12,9 +12,15 @@ import com.javawebtutor.model.User;
 public class LoginService {
 
     public boolean authenticateUser(String email, String password) {
-        User user = getUserByUserId(email);          
-        if(user!=null && user.getEmail().equals(email) && user.getEncrypted_password().equals(password)){
-            return true;
+        User user = getUserByUserId(email);   
+        String status = "Active";
+        if(user!=null && user.getEmail().equals(email) && user.getEncrypted_password().equals(password) && user.getStatus().equals(status)){
+        	//if(user.getStatus() == status){
+        		//System.out.println("Logged in after checking status");
+        		//return true;
+        	//}
+        	System.out.println("Normal Log in :  " + user.getEmail());
+        	return true;
         }else{ 
             return false;
         }

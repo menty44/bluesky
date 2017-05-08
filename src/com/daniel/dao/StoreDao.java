@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import com.daniel.model.Store;
 
 import com.daniel.util.HibernateUtil;
+import com.javawebtutor.model.User;
 
 public class StoreDao {
 
@@ -26,8 +27,9 @@ public class StoreDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -45,8 +47,9 @@ public class StoreDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -63,8 +66,9 @@ public class StoreDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
     }
 
@@ -78,8 +82,9 @@ public class StoreDao {
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
         return stores;
     }
@@ -97,9 +102,29 @@ public class StoreDao {
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
         }
         return store;
+    }
+    
+    public long  getCount() {
+        User count1 = new User();
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        //try {
+            trns = session.beginTransaction();
+            //count = session.createQuery(" count(*) from User").list();
+            long count = (long)session.createQuery("select count(*) from Store").uniqueResult();
+//        } catch (RuntimeException e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            session.flush();
+//            session.close();
+//        }
+        //return count;
+		return count;
     }
 }

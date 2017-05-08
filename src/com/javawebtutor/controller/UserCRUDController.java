@@ -71,7 +71,12 @@ public class UserCRUDController extends HttpServlet {
 //				String listData=jsonArray.toString();	
 				String listData= Long.toString(cnt1)  ;
 				//Return Json in the format required by jTable plugin
-				listData="{\"Result\":\"OK\",\"DatabaseCount\":"+listData+"}";			
+				
+				//original json data to be consumed ##freds hack
+				//listData="{\"Result\":\"OK\",\"DatabaseCount\":"+listData+"}";
+				
+				//freds list data hack in order to fetch thr count only..wunt return json response
+				listData = listData;
 				response.getWriter().print(listData);
 				}catch(Exception ex){
 					String error="{\"Result\":\"ERROR\",\"Message\":"+ex.getMessage()+"}";

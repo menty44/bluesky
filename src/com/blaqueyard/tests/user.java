@@ -22,130 +22,108 @@ import org.json.simple.parser.ParseException;
  *
  * @author fred
  */
-public class test{
+public class user{
     
-    public String sendPOST() throws IOException, NoSuchAlgorithmException{
+    public String sendGET() throws IOException, NoSuchAlgorithmException, ParseException{
     	
-    	String key = "action=create";
-       //String url = "http://developer.cbagroup.com/api/CreditTransfer?api_key=cbatest123";
-    	String url = "http://localhost:8080/smartshopper/WebserviceController?"+ key;
-        URL object = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) object.openConnection();
+    	String url = "http://localhost:8080/smartshopper/UserCRUDController?action=count";
 
-        //add reuqest header
-        con.setRequestMethod("POST");
-        //con.setRequestProperty("User-Agent", USER_AGENT);
-        con.setRequestProperty("Accept", "application/json");
-        
-        String urlParameters = "name=hhh&";
+		URL obj = new URL(url);
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        // Send post request
-        con.setDoOutput(true);
-        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-        wr.writeBytes(urlParameters);
-        wr.flush();
-        wr.close();
+		// optional default is GET
+		con.setRequestMethod("GET");
 
-        int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'POST' request to URL : " + url);
-        System.out.println("Post parameters : " + urlParameters);
-        System.out.println("Response Code : " + responseCode);
+		//add request header
+		con.setRequestProperty("User-Agent", "USER_AGENT");
 
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
+		int responseCode = con.getResponseCode();
+		System.out.println("\nSending 'GET' request to URL : " + url);
+		System.out.println("Response Code : " + responseCode);
 
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        
-        in.close();
+		BufferedReader in = new BufferedReader(
+		        new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
 
-        //print result
-        System.out.println(response.toString());
-        
-        ////////// start  ////////////////////
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+
+		//print result
+		System.out.println(response.toString());
+		
         String result = response.toString();
 
         
         JSONParser parser = new JSONParser();
         
-        try {
-
-            Object obj = parser.parse(result);
-
-            JSONObject jsonObject = (JSONObject) obj;
-            //System.out.println(jsonObject);
-            
-            long ResCode = (long) jsonObject.get("Response Code");
-            System.out.println();
-            System.out.println("Response Code : " + ResCode);
-            System.out.println();
-            
-            if (ResCode == 1) {
-            	
-            	System.out.println("#########################################################");
-				System.out.println("Fred hack Fail");
-				System.out.println();
-            	
-            	long ResCode1 = (long) jsonObject.get("Response Code");
-                System.out.println();
-                System.out.println("Response Code : " + ResCode1);
-                System.out.println();
-
-                String Ref = (String) jsonObject.get("Reference");
-                System.out.println();
-                System.out.println("Reference : " +Ref);
-                System.out.println();
-                
-                String Des = (String) jsonObject.get("Description");
-                System.out.println();
-                System.out.println("Description : " + Des);
-                System.out.println();
-				
-			} else {
-				
-				System.out.println("#########################################################");
-				System.out.println("Fred hack Success");
-				System.out.println();
-				
-				long ResCode1 = (long) jsonObject.get("Response Code");
-                System.out.println();
-                System.out.println("Response Code : " + ResCode1);
-                System.out.println();
-
-                String Ref = (String) jsonObject.get("Reference");
-                System.out.println();
-                System.out.println("Reference : " +Ref);
-                System.out.println();
-                
-                String Des = (String) jsonObject.get("Description");
-                System.out.println();
-                System.out.println("Description : " + Des);
-                System.out.println();
-
+//        //try {
+//
+//            Object objone = parser.parse(result);
+//
+//            JSONObject jsonObject = (JSONObject) objone;
+//            //System.out.println(jsonObject);
+//            
+//            String ResCode = (String) jsonObject.get("Result");
+//            System.out.println();
+//            System.out.println("Response Code : " + ResCode);
+//            System.out.println();
+//            
+//            String success = "OK";
+//            
+//            if (ResCode == success ) {
+//            	
+//            	System.out.println("#########################################################");
+//				System.out.println("Fred hack Fail");
+//				            	
+//            	long ResCode1 = (long) jsonObject.get("Response Code");
+//                System.out.println();
+//                System.out.println("Response Code : " + ResCode1);
+//                System.out.println();
+//
+//                String Ref = (String) jsonObject.get("Reference");
+//                System.out.println();
+//                System.out.println("Reference : " +Ref);
+//                System.out.println();
+//                
+//                String Des = (String) jsonObject.get("Description");
+//                System.out.println();
+//                System.out.println("Description : " + Des);
+//                System.out.println();
+//				
+//			} else {
+//				
+//				System.out.println("#########################################################");
+//				System.out.println("Fred hack Success");
+//				System.out.println();
+//				
+////				String res = (String) jsonObject.get("Result");
+////                System.out.println();
+////                System.out.println("Result : " + res);
+////                System.out.println();
+//
+//                long Count = (long) jsonObject.get("DatabaseCount");
+//                System.out.println();
+//                System.out.println("DatabaseCount : " + Count);
+//                System.out.println();
+//               String t = Long.toString(Count);
+//                
+////                String Des = (String) jsonObject.get("Description");
+////                System.out.println();
+////                System.out.println("Description : " + Des);
+////                System.out.println();
+//
+////			}catch (Exception e) {
+////				// TODO: handle exception
+////				e.printStackTrace();
+////			}
+//        
+//
+//	}
+			return result ;
 			}
-            
-            
-
-//            long age = (Long) jsonObject.get("Description");
-//            System.out.println(age);
-
-            // loop array
-//            JSONArray msg = (JSONArray) jsonObject.get("messages");
-//            Iterator<String> iterator = msg.iterator();
-//            while (iterator.hasNext()) {
-//                System.out.println(iterator.next());
-            //}
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-    
-        return response.toString();
-    }
     
     
 }

@@ -353,6 +353,9 @@
     $(document).ready(function () {
         $('#PersonTableContainer').jtable({
             title: 'Table of Stores',
+            paging: true,
+            sorting: true,
+            defaultSorting: 'name ASC',
             actions: {
                 listAction: 'StoreCRUDController?action=list',
                 createAction:'StoreCRUDController?action=create',

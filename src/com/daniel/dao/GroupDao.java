@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import com.daniel.model.Group;
 //import com.daniel.model.User;
 import com.daniel.util.HibernateUtil;
+import com.javawebtutor.model.User;
 
 public class GroupDao {
 
@@ -26,8 +27,10 @@ public class GroupDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
+            //session.close();
         }
     }
 
@@ -45,8 +48,10 @@ public class GroupDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
+            //session.close();
         }
     }
 
@@ -63,8 +68,10 @@ public class GroupDao {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
+            //session.close();
         }
     }
 
@@ -78,8 +85,10 @@ public class GroupDao {
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
+            //session.close();
         }
         return groups;
     }
@@ -97,9 +106,30 @@ public class GroupDao {
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+//            session.flush();
+//            session.clear(); 
+//            session.disconnect();
+            //session.close();
         }
         return group;
+    }
+    
+    public long  getCount() {
+        User count1 = new User();
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        //try {
+            trns = session.beginTransaction();
+            //count = session.createQuery(" count(*) from User").list();
+            long count = (long)session.createQuery("select count(*) from Group").uniqueResult();
+//        } catch (RuntimeException e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            session.flush();
+//            session.close();
+//        }
+        //return count;
+		return count;
     }
 }
